@@ -64,7 +64,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
 
-    app.logger.info("Event contents: " + event.message)
+    app.logger.info("Event contents: " + str(event.message))
 
     text = event.message.text
     if text  == "あなたの名前は":
