@@ -39,10 +39,8 @@ if channel_access_token is None:
     print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
     sys.exit(1)
 
-#line_bot_api = LineBotApi(channel_access_token)
-#handler = WebhookHandler(channel_secret)
-line_bot_api = LineBotApi("grgYCtNNHt3ZQfN1ju/YjVAtMb9j8clnZX/Pr4KcPc+gWr2lpj/I/8ISOMCrjqBixJDFTT/XK3R+9Q/sneiRLjNgS/cumgEz/uT0qyVhX8ey8nFA933P3X8LnCJyBUOrx17YqNEw8kMP0GGy+yBioQdB04t89/1O/w1cDnyilFU=")
-handler = WebhookHandler("4d9bd787da34983695b468531f50daf1")
+line_bot_api = LineBotApi(channel_access_token)
+handler = WebhookHandler(channel_secret)
 
 
 @app.route("/callback", methods=['POST'])
@@ -72,4 +70,5 @@ def message_text(event):
 
 
 if __name__ == "__main__":
-    app.run()
+    port = int(os.getenv("PORT", 5000))
+    app.run(port=port)
