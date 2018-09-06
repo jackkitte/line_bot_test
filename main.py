@@ -64,6 +64,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
 
+    app.logger.info(event)
     text = event.message.text
     if text  == "あなたの名前は":
         line_bot_api.reply_message(
