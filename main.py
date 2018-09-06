@@ -63,10 +63,23 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)
-    )
+
+    text = event.message.text
+    if text  == "あなたの名前は":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="LINE Bot です！")
+        )
+    elif text == "お元気ですか":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="元気モリモリ！")
+        )
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="テスト中")
+        )
 
 
 if __name__ == "__main__":
